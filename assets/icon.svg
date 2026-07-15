@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Random Night moon icon">
+  <rect width="512" height="512" rx="112" fill="#7856d9"/>
+  <circle cx="256" cy="226" r="142" fill="#fff9ec"/>
+  <circle cx="321" cy="174" r="142" fill="#7856d9"/>
+  <path d="M86 348c52-54 103-24 132 3 42-76 147-57 170 18 25-10 57-4 78 18v65H73c-12-39-5-75 13-104Z" fill="#151219"/>
+  <circle cx="143" cy="141" r="10" fill="#fff9ec"/>
+  <circle cx="404" cy="113" r="7" fill="#fff9ec"/>
+  <path d="M118 205h26M131 192v26M405 232h20M415 222v20" stroke="#fff9ec" stroke-width="8" stroke-linecap="round"/>
+</svg>

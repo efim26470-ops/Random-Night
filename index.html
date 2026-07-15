@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#7856d9" />
+    <meta name="description" content="Random Night creates personalized, playful plans for memorable evenings." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Random Night" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./assets/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Random Night</title>
+  </head>
+  <body>
+    <div class="top-blob" aria-hidden="true"></div>
+
+    <main class="app-shell" id="app">
+      <header class="app-header">
+        <button class="brand" id="homeButton" type="button" aria-label="Random Night home">
+          <span class="brand-name">random night</span>
+          <span class="version">v1.0</span>
+        </button>
+
+        <div class="header-actions">
+          <button class="lang-toggle" id="languageButton" type="button" aria-label="Switch language" aria-pressed="false">
+            <span id="languageLabel">RU</span>
+            <span class="toggle-knob" aria-hidden="true"></span>
+          </button>
+          <button class="icon-button" id="settingsButton" type="button" aria-label="Open settings" title="Settings">
+            <span aria-hidden="true">⚙</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="screen intro-screen is-active" id="introScreen" aria-labelledby="introTitle">
+        <div class="moon-stage" aria-hidden="true">
+          <span class="moon-star moon-star-one">✦</span>
+          <span class="moon-star moon-star-two">· · ·</span>
+          <div class="moon"><span class="moon-crater crater-one"></span><span class="moon-crater crater-two"></span></div>
+          <div class="cloud cloud-back"></div>
+          <div class="cloud cloud-front"></div>
+        </div>
+
+        <div class="conversation-card">
+          <p class="eyebrow" data-i18n="eyebrow">TONIGHT, REWRITTEN</p>
+          <h1 id="introTitle" data-i18n="introTitle">Good evenings don’t plan themselves.</h1>
+
+          <div class="bubble bubble-left">
+            <span data-i18n="bubbleOne">Okay, let’s come up with something for tonight — just not the usual.</span>
+            <span class="bubble-tail" aria-hidden="true"></span>
+          </div>
+          <div class="bubble bubble-right">
+            <span>«Давай что-нибудь придумаем на вечер. Только не заезженное.»</span>
+            <span class="bubble-tail" aria-hidden="true"></span>
+          </div>
+
+          <button class="primary-button" id="startButton" type="button">
+            <span data-i18n="start">Let’s start</span>
+            <span aria-hidden="true">→</span>
+          </button>
+          <p class="microcopy" data-i18n="microcopy">We’ll turn your mood, budget and people into one ready-to-go plan.</p>
+        </div>
+      </section>
+
+      <section class="screen builder-screen" id="builderScreen" aria-labelledby="builderTitle" hidden>
+        <div class="screen-heading">
+          <button class="back-button" type="button" data-back="intro" aria-label="Go back">←</button>
+          <div>
+            <p class="eyebrow" data-i18n="stepOne">STEP 1 OF 2</p>
+            <h1 id="builderTitle" data-i18n="builderTitle">What kind of night are we making?</h1>
+          </div>
+        </div>
+
+        <form id="preferencesForm" class="preferences-form">
+          <fieldset>
+            <legend data-i18n="people">How many people?</legend>
+            <div class="stepper">
+              <button type="button" id="peopleMinus" aria-label="Remove one person">−</button>
+              <output id="peopleValue" for="peopleMinus peoplePlus">2</output>
+              <button type="button" id="peoplePlus" aria-label="Add one person">+</button>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div class="label-row">
+              <legend data-i18n="budget">Budget per person</legend>
+              <output id="budgetValue" for="budgetRange">$35</output>
+            </div>
+            <input id="budgetRange" type="range" min="0" max="120" step="5" value="35" />
+            <div class="range-notes"><span data-i18n="free">Free</span><span id="budgetMax">$120+</span></div>
+          </fieldset>
+
+          <fieldset>
+            <div class="label-row">
+              <legend data-i18n="duration">Time available</legend>
+              <output id="durationValue" for="durationRange">4h</output>
+            </div>
+            <input id="durationRange" type="range" min="2" max="8" step="1" value="4" />
+            <div class="range-notes"><span id="durationMin">2h</span><span id="durationMax">8h</span></div>
+          </fieldset>
+
+          <fieldset>
+            <legend data-i18n="mood">Your mood</legend>
+            <div class="choice-grid" id="moodChoices">
+              <button class="choice-button" type="button" data-value="cozy" aria-pressed="false"><span aria-hidden="true">☕</span><span data-i18n="cozy">Cozy</span></button>
+              <button class="choice-button is-selected" type="button" data-value="curious" aria-pressed="true"><span aria-hidden="true">✦</span><span data-i18n="curious">Curious</span></button>
+              <button class="choice-button" type="button" data-value="wild" aria-pressed="false"><span aria-hidden="true">⚡</span><span data-i18n="wild">Wild</span></button>
+              <button class="choice-button" type="button" data-value="active" aria-pressed="false"><span aria-hidden="true">↗</span><span data-i18n="active">Active</span></button>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend data-i18n="where">Where?</legend>
+            <div class="segmented-control" id="locationChoices">
+              <button class="is-selected" type="button" data-value="mixed" aria-pressed="true" data-i18n="mixed">Surprise me</button>
+              <button type="button" data-value="inside" aria-pressed="false" data-i18n="inside">Inside</button>
+              <button type="button" data-value="outside" aria-pressed="false" data-i18n="outside">Outside</button>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend data-i18n="activities">Things you’re up for</legend>
+            <div class="tag-list" id="activityChoices">
+              <button type="button" data-value="food" aria-pressed="true" class="is-selected" data-i18n="food">Food</button>
+              <button type="button" data-value="film" aria-pressed="true" class="is-selected" data-i18n="film">Film</button>
+              <button type="button" data-value="games" aria-pressed="true" class="is-selected" data-i18n="games">Games</button>
+              <button type="button" data-value="walk" aria-pressed="true" class="is-selected" data-i18n="walk">Walk</button>
+              <button type="button" data-value="challenge" aria-pressed="false" data-i18n="challenge">Challenge</button>
+            </div>
+          </fieldset>
+
+          <button class="primary-button" type="submit">
+            <span data-i18n="makePlan">Make our night</span>
+            <span aria-hidden="true">✦</span>
+          </button>
+        </form>
+      </section>
+
+      <section class="screen result-screen" id="resultScreen" aria-labelledby="resultTitle" hidden>
+        <div class="screen-heading result-heading">
+          <button class="back-button" type="button" data-back="builder" aria-label="Edit preferences">←</button>
+          <div>
+            <p class="eyebrow" data-i18n="yourNight">YOUR RANDOM NIGHT</p>
+            <h1 id="resultTitle" data-i18n="resultTitle">Tonight has a plot now.</h1>
+          </div>
+        </div>
+
+        <div class="plan-meta" id="planMeta" aria-live="polite"></div>
+        <ol class="timeline" id="timeline"></ol>
+
+        <div class="result-actions">
+          <button class="secondary-button" id="rouletteButton" type="button"><span aria-hidden="true">↻</span><span data-i18n="roulette">Roulette</span></button>
+          <button class="secondary-button" id="voteButton" type="button"><span aria-hidden="true">✓</span><span data-i18n="vote">Vote</span></button>
+          <button class="primary-button" id="shareButton" type="button"><span data-i18n="share">Share the plan</span><span aria-hidden="true">↗</span></button>
+        </div>
+        <button class="text-button" id="remixButton" type="button" data-i18n="remix">Remix this night</button>
+      </section>
+    </main>
+
+    <dialog class="sheet" id="settingsDialog" aria-labelledby="settingsTitle">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-header">
+        <div><p class="eyebrow" data-i18n="preferences">PREFERENCES</p><h2 id="settingsTitle" data-i18n="settings">Settings</h2></div>
+        <button class="icon-button" type="button" data-close-dialog="settingsDialog" aria-label="Close settings">×</button>
+      </div>
+      <label class="setting-row"><span data-i18n="sound">Celebration sound</span><input id="soundToggle" type="checkbox" checked /></label>
+      <label class="setting-row"><span data-i18n="currency">Currency</span><select id="currencySelect"><option value="USD">USD $</option><option value="EUR">EUR €</option><option value="RUB">RUB ₽</option></select></label>
+      <button class="secondary-button full-width" id="installButton" type="button"><span aria-hidden="true">⇩</span><span data-i18n="install">Install on iPhone</span></button>
+      <p class="settings-note" data-i18n="privacy">No account. No tracking. Your choices stay on this device.</p>
+    </dialog>
+
+    <dialog class="sheet game-sheet" id="rouletteDialog" aria-labelledby="rouletteTitle">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-header">
+        <div><p class="eyebrow" data-i18n="chanceMode">CHANCE MODE</p><h2 id="rouletteTitle" data-i18n="rouletteTitle">Let fate pick one.</h2></div>
+        <button class="icon-button" type="button" data-close-dialog="rouletteDialog" aria-label="Close roulette">×</button>
+      </div>
+      <div class="roulette-list" id="rouletteList" aria-live="polite"></div>
+      <button class="primary-button" id="spinButton" type="button"><span data-i18n="spin">Spin again</span><span aria-hidden="true">↻</span></button>
+    </dialog>
+
+    <dialog class="sheet game-sheet" id="voteDialog" aria-labelledby="voteTitle">
+      <div class="sheet-handle" aria-hidden="true"></div>
+      <div class="sheet-header">
+        <div><p class="eyebrow" data-i18n="groupDecision">GROUP DECISION</p><h2 id="voteTitle" data-i18n="voteTitle">Pass the phone. Cast a vote.</h2></div>
+        <button class="icon-button" type="button" data-close-dialog="voteDialog" aria-label="Close vote">×</button>
+      </div>
+      <div class="vote-list" id="voteList"></div>
+      <p class="settings-note" id="voteHint" data-i18n="voteHint">Tap one option per person. Results update instantly.</p>
+      <button class="text-button" id="resetVotesButton" type="button" data-i18n="resetVotes">Reset votes</button>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>

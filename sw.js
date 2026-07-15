@@ -1,4 +1,4 @@
-const CACHE = "random-night-v1.0.1";
+const CACHE = "random-night-v1.1.0";
 const APP_SHELL = ["./", "./index.html", "./styles.css", "./app.js", "./manifest.webmanifest", "./assets/icon.svg", "./assets/icon-192.png", "./assets/icon-512.png"];
 
 self.addEventListener("install", (event) => {

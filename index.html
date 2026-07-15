@@ -21,7 +21,7 @@
       <header class="app-header">
         <button class="brand" id="homeButton" type="button" aria-label="Random Night home">
           <span class="brand-name">random night</span>
-          <span class="version">v1.0</span>
+          <span class="version">v1.1</span>
         </button>
 
         <div class="header-actions">
@@ -89,8 +89,9 @@
               <legend data-i18n="budget">Budget per person</legend>
               <output id="budgetValue" for="budgetRange">$35</output>
             </div>
-            <input id="budgetRange" type="range" min="0" max="120" step="5" value="35" />
-            <div class="range-notes"><span data-i18n="free">Free</span><span id="budgetMax">$120+</span></div>
+            <input id="budgetRange" type="range" min="0" max="200" step="5" value="35" />
+            <div class="range-notes"><span data-i18n="free">Free</span><span id="budgetMax">$200+</span></div>
+            <p class="budget-caption" id="budgetTierLabel" aria-live="polite">Comfortable night</p>
           </fieldset>
 
           <fieldset>
@@ -128,6 +129,8 @@
               <button type="button" data-value="film" aria-pressed="true" class="is-selected" data-i18n="film">Film</button>
               <button type="button" data-value="games" aria-pressed="true" class="is-selected" data-i18n="games">Games</button>
               <button type="button" data-value="walk" aria-pressed="true" class="is-selected" data-i18n="walk">Walk</button>
+              <button type="button" data-value="culture" aria-pressed="true" class="is-selected" data-i18n="culture">Culture</button>
+              <button type="button" data-value="music" aria-pressed="true" class="is-selected" data-i18n="music">Music</button>
               <button type="button" data-value="challenge" aria-pressed="false" data-i18n="challenge">Challenge</button>
             </div>
           </fieldset>
